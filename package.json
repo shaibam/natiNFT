@@ -2,9 +2,9 @@
   "name": "nft",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/main.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/shaibam/natiNFT/issues"
   },
-  "homepage": "https://github.com/shaibam/natiNFT#readme"
+  "homepage": "https://github.com/shaibam/natiNFT#readme",
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.2"
+  }
 }

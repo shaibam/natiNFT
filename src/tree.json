@@ -1,0 +1,14 @@
+    [
+        {
+            "folders": [
+                "./media/Background"
+            ],
+            "mandatory": true
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Skin"
+            ],
+            "mandatory": true
+        }
+    ]

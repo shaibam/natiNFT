@@ -1,0 +1,85 @@
+    [
+        {
+            "folders": [
+                "./media/Background"
+            ],
+            "mandatory": true
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Skin"
+            ],
+            "mandatory": true
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Eyes"
+            ],
+            "mandatory": true
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Eyebrows"
+            ],
+            "mandatory": true
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Hair"
+            ],
+            "mandatory": true
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Nose"
+            ],
+            "mandatory": true
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Extras"
+            ]
+        },
+        {
+            "folders": [
+                "./media/Leotard"
+            ],
+            "mandatory": true
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Fishnet Stockings"
+            ],
+            "mandatory": true
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Earings"
+            ]
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Halo"
+            ]
+        },
+        {
+            "folders": [
+                "./media/Neck"
+            ]
+        },
+        {
+            "folders": [
+                "./media/Pimples"
+            ]
+        },
+        {
+            "folders": [
+                "./media/Smoke"
+            ]
+        },
+        {
+            "folders": [
+                "./media/Tattoo"
+            ]
+        }
+    ]
