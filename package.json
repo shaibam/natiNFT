@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "start": "node src/main.js"
+    "start": "FFMPEG_PATH='ffmpeg/ffmpeg' FFPROBE_PATH='ffmpeg/ffprobe' node src/main.js"
   },
   "repository": {
     "type": "git",
