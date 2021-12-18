@@ -1,6 +1,7 @@
-const tree = require('./tree.json')
+//const tree = require('./tree.json')
+const tree = require('./miniTree.json')
 const fs = require('fs');
-const _ = require('lodash');
+//const _ = require('lodash');
 //require('deepdash')(_);
 var ffmpeg = require('fluent-ffmpeg');
 
@@ -30,28 +31,19 @@ const createVariations = (_tree) => {
     return v
 }
 
-const ffmpegVariation = (variation, outputFile) => {
+const ffmpegVariation = (variation) => {
     //ffmpeg -i B.png -i A.png -filter_complex "[1]scale=iw/2:-1[b];[0:v][b] overlay" out.png
     let command = ffmpeg();
-    variation.forEach((fileName) => command.mergeAdd(fileName));
-    const complexFilter = _.map(variation.slice(0, variation.length - 1), (a, i) => (`[${i}]overlay${i < variation.length - 2 ? `[${i + 1}]` : ''}`))
-
-    console.log(complexFilter)
-    command
-        .complexFilter(complexFilter)
-        .output(outputFile)
-        .save('./exports/out.png')
-        .on('error', function (err, stdout, stderr) {
-            console.log(`cannot process the video ${err.message}`);
-        });
+    for (var i in variations) {
+        command.input(variations[i])
+    }
+    command.complexFilter([
+        '[1]scale=iw/2:-1[b]',
+        '[0:v][b] overlay'
+    ]).output('./out.png');
 }
 const variations = createVariations(tree);
 
-var j = Math.floor(Math.random() * variations.length);
-for (var i = 0; i < 10; i++) {
-    //let output = variations[i].join('__').replace(/\.\/media\//g, '').replace(/\//g, '_').replace(/\.png/g, '').replace(/\.jpg/g, '');
-    ffmpegVariation(_.compact(variations[j]), './exports/' + j + '.png');
-    j = Math.floor(Math.random() * variations.length)
-}
+ffmpegVariation([0]);
 
 console.log({ variationsL: variations.length });
