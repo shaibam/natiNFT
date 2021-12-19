@@ -1,5 +1,5 @@
-const tree = require('./tree.json')
-//const tree = require('./miniTree.json')
+//const tree = require('./tree.json')
+const tree = require('./miniTree.json')
 const fs = require('fs');
 const _ = require('lodash');
 //require('deepdash')(_);
@@ -64,17 +64,25 @@ const trimVariations = (variations, tree) => {
 const { trimVs, treeKeys } = trimVariations(variations, tree);
 
 console.log({ trimVsL: trimVs.length });
-const ITERATIONS = 100;
-const CHUNK_SIZE = Math.ceil(trimVs.length / ITERATIONS);
-for (let i = 0; i < ITERATIONS; i++) {
-    const st = JSON.stringify(trimVs.slice(i * CHUNK_SIZE, (i * CHUNK_SIZE) + CHUNK_SIZE));
-    fs.writeFile(`./log/log${i * CHUNK_SIZE}.json`, st, function (err) {
-        if (err) {
-            return console.log(err);
-        }
-        console.log(`The log${i * CHUNK_SIZE}.json was saved!`);
-    });
-}
+const st = JSON.stringify(trimVs)
+fs.writeFile(`./log/log.json`, st, function (err) {
+    if (err) {
+        return console.log(err);
+    }
+    console.log(`The log.json was saved!`);
+});
+
+//const ITERATIONS = 100;
+//const CHUNK_SIZE = Math.ceil(trimVs.length / ITERATIONS);
+//for (let i = 0; i < ITERATIONS; i++) {
+//    const st = JSON.stringify(trimVs.slice(i * CHUNK_SIZE, (i * CHUNK_SIZE) + CHUNK_SIZE));
+//    fs.writeFile(`./log/log${i * CHUNK_SIZE}.json`, st, function (err) {
+//        if (err) {
+//            return console.log(err);
+//        }
+//        console.log(`The log${i * CHUNK_SIZE}.json was saved!`);
+//    });
+//}
 
 fs.writeFile("./log/treeKeys.json", JSON.stringify(treeKeys), function (err) {
     if (err) {
@@ -84,22 +92,22 @@ fs.writeFile("./log/treeKeys.json", JSON.stringify(treeKeys), function (err) {
 });
 
 
-const ffmpegVariation = (variation, outputFile) => {
-    //ffmpeg -i B.png -i A.png -filter_complex "[1]scale=iw/2:-1[b];[0:v][b] overlay" out.png
-    let command = ffmpeg();
-    variation.forEach((fileName) => command.mergeAdd(fileName));
-    const complexFilter = _.map(variation.slice(0, variation.length - 1), (a, i) => (`[${i}]overlay${i < variation.length - 2 ? `[${i + 1}]` : ''}`))
+//const ffmpegVariation = (variation, outputFile) => {
+//    //ffmpeg -i B.png -i A.png -filter_complex "[1]scale=iw/2:-1[b];[0:v][b] overlay" out.png
+//    let command = ffmpeg();
+//    variation.forEach((fileName) => command.mergeAdd(fileName));
+//    const complexFilter = _.map(variation.slice(0, variation.length - 1), (a, i) => (`[${i}]overlay${i < variation.length - 2 ? `[${i + 1}]` : ''}`))
 
-    console.log(complexFilter)
-    command
-        .complexFilter(complexFilter)
-        .output(outputFile)
-        .save('./exports/out.png')
-        .on('error', function (err, stdout, stderr) {
-            console.log(`cannot process the video ${err.message}`);
-        });
-}
-    ;
+//    console.log(complexFilter)
+//    command
+//        .complexFilter(complexFilter)
+//        .output(outputFile)
+//        .save('./exports/out.png')
+//        .on('error', function (err, stdout, stderr) {
+//            console.log(`cannot process the video ${err.message}`);
+//        });
+//}
+
 
 //var j = Math.floor(Math.random() * variations.length);
 //for (var i = 0; i < 10; i++) {

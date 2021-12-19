@@ -9,6 +9,7 @@
             "folders": [
                 "./media/Kim Jong Il/Skin"
             ],
+            "maxOccurrences": 6,
             "risk": 0.2
         },
         {

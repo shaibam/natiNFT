@@ -16,7 +16,7 @@
                 "./media/Kim Jong Il/Eyes"
             ],
             "risk": 0.1,
-            "maxOccurrences": 100
+            "maxOccurrences": 6
         },
         {
             "folders": [
@@ -59,19 +59,22 @@
             "folders": [
                 "./media/Earrings"
             ],
-            "risk": 0.1
+            "risk": 0.1,
+            "maxOccurrences": 6
         },
         {
             "folders": [
                 "./media/Halo"
             ],
-            "risk": 0.1
+            "risk": 0.1,
+            "maxOccurrences": 6
         },
         {
             "folders": [
                 "./media/Neck"
             ],
-            "risk": 0.1
+            "risk": 0.1,
+            "maxOccurrences": 6
         },
         {
             "folders": [
