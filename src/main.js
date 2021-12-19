@@ -16,8 +16,8 @@ const createVariations = (_tree) => {
     let nextV = [];
     if (slice.length) {
         nextV = createVariations(slice);
-        if (!_tree[0].mandatory)
-            nextV.push(null);
+        //if (!_tree[0].mandatory)
+        //    nextV.push(null);
     }
 
     //console.log({ slice, files })
