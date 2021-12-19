@@ -8,11 +8,14 @@
         {
             "folders": [
                 "./media/Kim Jong Il/Skin"
-            ]
+            ],
+            "risk": 0.1
         },
         {
             "folders": [
                 "./media/Kim Jong Il/Eyes"
-            ]
+            ],
+            "maxOccurrences": 112,
+            "risk": 0.9
         }
     ]

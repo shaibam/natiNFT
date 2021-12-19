@@ -5,6 +5,8 @@ const _ = require('lodash');
 //require('deepdash')(_);
 var ffmpeg = require('fluent-ffmpeg');
 
+const DEFAULT_RISK = 0.5;
+
 const createVariations = (_tree) => {
     const v = [];
     //console.log(_tree[0])
@@ -35,32 +37,46 @@ const variations = createVariations(tree);
 console.log({ variationsL: variations.length })
 
 const trimVariations = (variations, tree) => {
-    const treeKey = _.keyBy(tree, (d) => d.folders[0]);
+    const treeKeys = _.keyBy(tree, (d) => d.folders[0]);
     const result = [];
-    console.log({ treeKey, v: variations[0] });
     for (var i in variations) {
         const iv = _.compact(variations[i])
         const innerResult = [];
         for (j in iv) {
-            const lastI = iv[j].lastIndexOf('/')
-            if (treeKey[iv[j].slice(0, lastI)]?.mandatory) {
+            const lastI = iv[j].lastIndexOf('/');
+            const key = iv[j].slice(0, lastI);
+            if (!treeKeys[key].occurrences) treeKeys[key].occurrences = 0;
+            if (treeKeys[key]?.mandatory) {
                 innerResult.push(iv[j])
-            } else if (Math.random() < .1) {
-                innerResult.push(iv[j])
+                treeKeys[key].occurrences++;
+            } else if (Math.random() < (treeKeys[key].risk || DEFAULT_RISK)) {
+                if (treeKeys[key].occurrences < (treeKeys[key].maxOccurrences || Infinity)) {
+                    innerResult.push(iv[j]);
+                    treeKeys[key].occurrences++;
+                }
             }
         }
         result.push(innerResult)
     }
-    return _.values(_.keyBy(result));
+    return { trimVs: _.values(_.keyBy(result)), treeKeys };
 }
 
-const trimVs = trimVariations(variations, tree);
-console.log({ trimVsL: trimVs.length })
+const { trimVs, treeKeys } = trimVariations(variations, tree);
+
+console.log({ trimVsL: trimVs.length });
+
 fs.writeFile("./log/log.json", JSON.stringify(trimVs), function (err) {
     if (err) {
         return console.log(err);
     }
-    console.log("The file was saved!");
+    console.log("The log.json was saved!");
+});
+
+fs.writeFile("./log/treeKeys.json", JSON.stringify(treeKeys), function (err) {
+    if (err) {
+        return console.log(err);
+    }
+    console.log("The treeKeys.json was saved!");
 });
 
 
