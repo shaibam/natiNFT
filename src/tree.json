@@ -15,7 +15,8 @@
             "folders": [
                 "./media/Kim Jong Il/Eyes"
             ],
-            "occurrences": 0.1
+            "risk": 0.1,
+            "maxOccurrences": 100
         },
         {
             "folders": [
@@ -39,7 +40,8 @@
             "folders": [
                 "./media/Kim Jong Il/Extras"
             ],
-            "occurrences": 0.1
+            "risk": 0.1,
+            "maxOccurrences": 20
         },
         {
             "folders": [
@@ -57,36 +59,39 @@
             "folders": [
                 "./media/Earrings"
             ],
-            "occurrences": 0.1
+            "risk": 0.1
         },
         {
             "folders": [
                 "./media/Halo"
             ],
-            "occurrences": 0.1
+            "risk": 0.1
         },
         {
             "folders": [
                 "./media/Neck"
             ],
-            "occurrences": 0.1
+            "risk": 0.1
         },
         {
             "folders": [
                 "./media/Pimples"
             ],
-            "occurrences": 0.1
+            "risk": 0.1,
+            "maxOccurrences": 6
         },
         {
             "folders": [
                 "./media/Smoke"
             ],
-            "occurrences": 0.1
+            "risk": 0.1,
+            "maxOccurrences": 6
         },
         {
             "folders": [
                 "./media/Tattoo"
             ],
-            "occurrences": 0.1
+            "risk": 0.1,
+            "maxOccurrences": 6
         }
     ]

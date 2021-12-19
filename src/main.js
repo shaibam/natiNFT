@@ -1,5 +1,5 @@
-//const tree = require('./tree.json')
-const tree = require('./miniTree.json')
+const tree = require('./tree.json')
+//const tree = require('./miniTree.json')
 const fs = require('fs');
 const _ = require('lodash');
 //require('deepdash')(_);
@@ -64,13 +64,17 @@ const trimVariations = (variations, tree) => {
 const { trimVs, treeKeys } = trimVariations(variations, tree);
 
 console.log({ trimVsL: trimVs.length });
-
-fs.writeFile("./log/log.json", JSON.stringify(trimVs), function (err) {
-    if (err) {
-        return console.log(err);
-    }
-    console.log("The log.json was saved!");
-});
+const ITERATIONS = 100;
+const CHUNK_SIZE = Math.ceil(trimVs.length / ITERATIONS);
+for (let i = 0; i < ITERATIONS; i++) {
+    const st = JSON.stringify(trimVs.slice(i * CHUNK_SIZE, (i * CHUNK_SIZE) + CHUNK_SIZE));
+    fs.writeFile(`./log/log${i * CHUNK_SIZE}.json`, st, function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log(`The log${i * CHUNK_SIZE}.json was saved!`);
+    });
+}
 
 fs.writeFile("./log/treeKeys.json", JSON.stringify(treeKeys), function (err) {
     if (err) {
