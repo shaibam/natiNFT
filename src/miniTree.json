@@ -8,13 +8,11 @@
         {
             "folders": [
                 "./media/Kim Jong Il/Skin"
-            ],
-            "mandatory": true
+            ]
         },
         {
             "folders": [
                 "./media/Kim Jong Il/Eyes"
-            ],
-            "mandatory": true
+            ]
         }
     ]

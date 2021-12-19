@@ -19,6 +19,7 @@
   "dependencies": {
     "deepdash": "^5.3.9",
     "fluent-ffmpeg": "^2.1.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "winston": "^3.3.3"
   }
 }
