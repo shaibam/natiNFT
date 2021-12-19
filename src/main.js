@@ -14,41 +14,49 @@ const createVariations = (_tree) => {
     let nextV = [];
     if (slice.length) {
         nextV = createVariations(slice);
-        //if (!_tree[0].mandatory) {
-        //    console.log(nextV);
-        //    nextV.push(null);
-        //}
+        if (!_tree[0].mandatory)
+            nextV.push(null);
     }
 
     //console.log({ slice, files })
     for (var i in files) {
-        if (!nextV.length) {
-            //stuck with 3d glasses
-            console.log({ n: files[i] })
+        if (!nextV.length)
             v.push([_tree[0].folders[0] + '/' + files[i]]);
-        } else
+        else
             for (var j in nextV) {
-                const r = Math.random();
-                //console.log({ r, n: files[i] })
-                if (_tree[0].mandatory || r < .1) {
-                    v.push([_tree[0].folders[0] + '/' + files[i]]);
-                    v[v.length - 1] = v[v.length - 1].concat(nextV[j])
-                } else {
-                    v.push([null]);
-                    v[v.length - 1] = v[v.length - 1].concat(nextV[j])
-                }
+                v.push([_tree[0].folders[0] + '/' + files[i]]);
+                v[v.length - 1] = v[v.length - 1].concat(nextV[j])
             }
     }
     return v
 }
 
 const variations = createVariations(tree);
-console.log({ variationsL: variations.length });
-const nv = _.values(_.keyBy(_.map(variations, _.compact)));
-console.log()
-console.log({ nvL: nv.length });
+console.log({ variationsL: variations.length })
 
-fs.writeFile("./log/log.json", JSON.stringify(nv), function (err) {
+const trimVariations = (variations, tree) => {
+    const treeKey = _.keyBy(tree, (d) => d.folders[0]);
+    const result = [];
+    console.log({ treeKey, v: variations[0] });
+    for (var i in variations) {
+        const iv = _.compact(variations[i])
+        const innerResult = [];
+        for (j in iv) {
+            const lastI = iv[j].lastIndexOf('/')
+            if (treeKey[iv[j].slice(0, lastI)]?.mandatory) {
+                innerResult.push(iv[j])
+            } else if (Math.random() < .1) {
+                innerResult.push(iv[j])
+            }
+        }
+        result.push(innerResult)
+    }
+    return _.values(_.keyBy(result));
+}
+
+const trimVs = trimVariations(variations, tree);
+console.log({ trimVsL: trimVs.length })
+fs.writeFile("./log/log.json", JSON.stringify(trimVs), function (err) {
     if (err) {
         return console.log(err);
     }
@@ -62,6 +70,7 @@ const ffmpegVariation = (variation, outputFile) => {
     variation.forEach((fileName) => command.mergeAdd(fileName));
     const complexFilter = _.map(variation.slice(0, variation.length - 1), (a, i) => (`[${i}]overlay${i < variation.length - 2 ? `[${i + 1}]` : ''}`))
 
+    console.log(complexFilter)
     command
         .complexFilter(complexFilter)
         .output(outputFile)
@@ -70,11 +79,13 @@ const ffmpegVariation = (variation, outputFile) => {
             console.log(`cannot process the video ${err.message}`);
         });
 }
+    ;
 
-var j = Math.floor(Math.random() * variations.length);
-for (var i = 0; i < 10; i++) {
-    //let output = variations[i].join('__').replace(/\.\/media\//g, '').replace(/\//g, '_').replace(/\.png/g, '').replace(/\.jpg/g, '');
-    ffmpegVariation(_.compact(variations[j]), './exports/' + j + '.png');
-    j = Math.floor(Math.random() * variations.length)
-}
+//var j = Math.floor(Math.random() * variations.length);
+//for (var i = 0; i < 10; i++) {
+//    //let output = variations[i].join('__').replace(/\.\/media\//g, '').replace(/\//g, '_').replace(/\.png/g, '').replace(/\.jpg/g, '');
+//    ffmpegVariation(_.compact(variations[j]), './exports/' + j + '.png');
+//    j = Math.floor(Math.random() * variations.length)
+//}
+
 
