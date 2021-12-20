@@ -3,20 +3,18 @@
             "folders": [
                 "./media/Background"
             ],
-            "mandatory": true
+            "risk": 1
         },
         {
             "folders": [
                 "./media/Kim Jong Il/Skin"
             ],
-            "maxOccurrences": 6,
-            "risk": 0.2
+            "risk": 1
         },
         {
             "folders": [
                 "./media/Kim Jong Il/Eyes"
             ],
-            "maxOccurrences": 6,
-            "risk": 0.2
+            "risk": 0.5
         }
     ]
