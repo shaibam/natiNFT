@@ -1,5 +1,5 @@
-//const tree = require('./tree.json')
-const tree = require('./miniTree.json')
+const tree = require('./tree.json')
+//const tree = require('./miniTree.json')
 const fs = require('fs');
 const _ = require('lodash');
 
@@ -37,10 +37,11 @@ fs.writeFile("./log/countUnique.json", JSON.stringify(countUnique), function (er
     console.log("The countUnique.json was saved!");
 });
 
-for (var i = 0; i < trimVs.length; i++) {
-    ffmpegVariation(_.compact(trimVs[i]), './exports/' + i + '.png');
-}
+//for (var i = 0; i < trimVs.length; i++) {
+//    ffmpegVariation(_.compact(trimVs[i]), './exports/' + i + '.png');
+//}
 
+ffmpegVariation(_.compact(trimVs[23152]), './exports/' + 23152 + '.png');
 
 //const ITERATIONS = 100;
 //const CHUNK_SIZE = Math.ceil(trimVs.length / ITERATIONS);

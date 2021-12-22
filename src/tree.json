@@ -3,57 +3,20 @@
             "folders": [
                 "./media/Background"
             ],
-            "mandatory": true
-        },
-        {
-            "folders": [
-                "./media/Kim Jong Il/Skin"
-            ],
-            "mandatory": true
-        },
-        {
-            "folders": [
-                "./media/Kim Jong Il/Eyes"
-            ],
-            "risk": 0.1,
-            "maxOccurrences": 6
-        },
-        {
-            "folders": [
-                "./media/Kim Jong Il/Eyebrows"
-            ],
-            "mandatory": true
-        },
-        {
-            "folders": [
-                "./media/Kim Jong Il/Hair"
-            ],
-            "mandatory": true
-        },
-        {
-            "folders": [
-                "./media/Kim Jong Il/Nose"
-            ],
-            "mandatory": true
-        },
-        {
-            "folders": [
-                "./media/Kim Jong Il/Extras"
-            ],
-            "risk": 0.1,
-            "maxOccurrences": 20
+            "risk": 1
         },
         {
             "folders": [
                 "./media/Leotard"
             ],
-            "mandatory": true
+            "risk": 1
         },
         {
             "folders": [
-                "./media/Fishnet Stockings"
+                "./media/Neck"
             ],
-            "mandatory": true
+            "risk": 0.1,
+            "maxOccurrences": 40
         },
         {
             "folders": [
@@ -64,14 +27,51 @@
         },
         {
             "folders": [
-                "./media/Halo"
+                "./media/Kim Jong Il/Skin"
+            ],
+            "risk": 1
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Eyebrows"
+            ],
+            "risk": 1
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Eyes"
             ],
             "risk": 0.1,
             "maxOccurrences": 6
         },
         {
             "folders": [
-                "./media/Neck"
+                "./media/Kim Jong Il/Hair"
+            ],
+            "risk": 1
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Nose"
+            ],
+            "risk": 0.1
+        },
+        {
+            "folders": [
+                "./media/Kim Jong Il/Extras"
+            ],
+            "risk": 0.1,
+            "maxOccurrences": 20
+        },
+        {
+            "folders": [
+                "./media/Fishnet Stockings"
+            ],
+            "risk": 1
+        },
+        {
+            "folders": [
+                "./media/Halo"
             ],
             "risk": 0.1,
             "maxOccurrences": 6
